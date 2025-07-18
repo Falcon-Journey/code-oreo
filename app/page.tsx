@@ -7,12 +7,10 @@ import WhyChooseUs from "@/components/why-choose-us"
 import Testimonials from "@/components/testimonials"
 import FAQ from "@/components/faq"
 import Footer from "@/components/footer"
-import FloatingElements from "@/components/floating-elements"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
-      <FloatingElements />
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navbar />
       <HeroSection />
       <LogoScroller />

@@ -40,61 +40,38 @@ export default function FAQ() {
   ]
 
   return (
-    <section className="py-20 bg-black relative overflow-hidden">
-      {/* Animated grid background */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="grid grid-cols-12 grid-rows-12 h-full w-full">
-          {[...Array(144)].map((_, i) => (
-            <div
-              key={i}
-              className="border border-[#3636D2]/20 animate-pulse"
-              style={{
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-20 bg-black">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Frequently Asked{" "}
-            <span className="bg-gradient-to-r from-[#3636D2] to-purple-400 bg-clip-text text-transparent animate-gradient-x">
+            <span className="bg-gradient-to-r from-[#3636D2] to-purple-400 bg-clip-text text-transparent">
               Questions
             </span>
           </h2>
-          <p className="text-xl text-gray-400 animate-fade-in-delayed">
-            Get answers to common questions about our services and process
-          </p>
+          <p className="text-xl text-gray-400">Get answers to common questions about our services and process</p>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-gray-900/70 to-black/70 rounded-2xl border border-[#3636D2]/20 hover:border-[#3636D2]/60 transition-all duration-500 backdrop-blur-sm group animate-fade-in-up hover:shadow-xl hover:shadow-[#3636D2]/10"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="bg-gradient-to-br from-gray-900/50 to-black/50 rounded-xl border border-[#3636D2]/20 hover:border-[#3636D2]/40 transition-all duration-300"
             >
               <button
-                className="w-full px-8 py-8 text-left flex justify-between items-center focus:outline-none group-hover:bg-[#3636D2]/5 transition-colors duration-300 rounded-2xl"
+                className="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <h3 className="text-lg md:text-xl font-semibold text-white pr-4 group-hover:text-[#3636D2] transition-colors duration-300">
-                  {faq.question}
-                </h3>
-                <div className="flex-shrink-0 p-2 bg-[#3636D2]/20 rounded-full group-hover:bg-[#3636D2]/40 transition-colors duration-300">
-                  {openIndex === index ? (
-                    <ChevronUp className="w-5 h-5 text-[#3636D2] transform rotate-180 transition-transform duration-300" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-[#3636D2] transition-transform duration-300" />
-                  )}
-                </div>
+                <h3 className="text-lg font-semibold text-white pr-4">{faq.question}</h3>
+                {openIndex === index ? (
+                  <ChevronUp className="w-5 h-5 text-[#3636D2] flex-shrink-0" />
+                ) : (
+                  <ChevronDown className="w-5 h-5 text-[#3636D2] flex-shrink-0" />
+                )}
               </button>
               {openIndex === index && (
-                <div className="px-8 pb-8 animate-fade-in">
-                  <p className="text-gray-400 leading-relaxed text-lg">{faq.answer}</p>
+                <div className="px-8 pb-6">
+                  <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </div>
